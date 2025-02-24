@@ -47,8 +47,14 @@
     
     <script>
         const audio = document.getElementById("bg-music");
+        
+        // Play music when the body is clicked (triggering the first time user interaction)
+        let isAudioPlayed = false;
         document.body.addEventListener("click", () => {
-            audio.play();
+            if (!isAudioPlayed) {
+                audio.play();
+                isAudioPlayed = true;  // Only play once to prevent multiple triggers
+            }
         }, { once: true });
         
         const compliments = [
@@ -109,7 +115,6 @@
             "You are the light that brightens my darkest days.",
             "You are a walking miracle.",
             "You make me believe in magic.",
-            ""
             "You are my heart’s greatest delight.",
             "You make my world brighter.",
             "Your love makes my heart race in the best way.",
