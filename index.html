@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Love</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-size: 2rem;
+            transition: opacity 0.5s ease-in-out;
+        }
+        #compliment {
+            background: purple;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px purple;
+            cursor: pointer;
+        }
+        @keyframes hearts {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100px); opacity: 0; }
+        }
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 2rem;
+            animation: hearts 1s linear;
+        }
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <audio id="bg-music" loop>
+        <source src="C:\Users\kobyw\Desktop\My Darling\OurSong.mp3" type="audio/mp3">
+    </audio>
+    <div id="compliment" onclick="changeCompliment()">You are amazing! 💜</div>
+    
+    <script>
+        const audio = document.getElementById("bg-music");
+        document.body.addEventListener("click", () => {
+            audio.play();
+        }, { once: true });
+        
+        const compliments = [
+            "You are an absolute treasure.",
+            "Your smile brightens even the darkest days.",
+            "You are a masterpiece of kindness and beauty.",
+            "The world is better because you're in it.",
+            "You have the kindest heart.",
+            "You radiate warmth and love.",
+            "You make life more beautiful just by being you.",
+            "You inspire me every single day.",
+            "Your laughter is pure magic.",
+            "You make my heart feel at home.",
+            "Your presence is a gift to everyone around you.",
+            "You have a heart of gold.",
+            "You make even the simplest moments special.",
+            "You bring so much happiness into my life.",
+            "You are incredibly thoughtful and caring.",
+            "I admire your strength and resilience.",
+            "You are the definition of grace and elegance.",
+            "You make the world a better place just by being you.",
+            "Your kindness is contagious.",
+            "You are as bright as the stars.",
+            "You are my safe haven.",
+            "You have the most wonderful soul.",
+            "You deserve all the happiness in the universe.",
+            "You are like a beautiful melody that never fades.",
+            "You make life so much sweeter.",
+            "You are the most wonderful part of my life.",
+            "Your love is my greatest blessing.",
+            "You are an endless source of joy.",
+            "You bring peace wherever you go.",
+            "You have a heart full of love and kindness.",
+            "You make my world complete.",
+            "You are my favorite person, always.",
+            "You are the sunshine that lights up my day.",
+            "You have the most beautiful soul.",
+            "You make love feel effortless.",
+            "Your energy is absolutely infectious.",
+            "You are the best thing that ever happened to me.",
+            "Your love is my greatest treasure.",
+            "You are an incredible person inside and out.",
+            "You make my life richer and more meaningful.",
+            "You have a magical way of making everything better.",
+            "Your love is the greatest gift I've ever received.",
+            "You light up my life like nobody else.",
+            "You are everything I ever dreamed of and more.",
+            "You are my greatest adventure.",
+            "You are my peace in a chaotic world.",
+            "Your love makes my heart soar.",
+            "You are my forever and always.",
+            "You are truly one of a kind.",
+            "You are as breathtaking as a sunset.",
+            "You are an incredible listener.",
+            "You have a heart that understands and cares deeply.",
+            "You are love in its purest form.",
+            "You are my dream come true.",
+            "You are the light that brightens my darkest days.",
+            "You are a walking miracle.",
+            "You make me believe in magic.",
+            ""
+            "You are my heart’s greatest delight.",
+            "You make my world brighter.",
+            "Your love makes my heart race in the best way.",
+            "You have a beautiful mind.",
+            "You bring happiness wherever you go.",
+            "You are a blessing to this world.",
+            "You have the warmest, most welcoming heart.",
+            "You are an angel in human form.",
+            "You make my heart skip a beat.",
+            "Your love is my greatest source of strength.",
+            "You are the embodiment of pure joy.",
+            "You make my dreams feel possible.",
+            "You make even the hardest days easier.",
+            "You are absolutely radiant.",
+            "You are a source of endless happiness.",
+            "You make my heart overflow with love.",
+            "You are an absolute delight."
+        ];
+        
+        function changeCompliment() {
+            const complimentDiv = document.getElementById("compliment");
+            const randomIndex = Math.floor(Math.random() * compliments.length);
+            complimentDiv.textContent = compliments[randomIndex];
+            createHeart();
+        }
+        
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * window.innerWidth + "px";
+            heart.style.top = Math.random() * window.innerHeight + "px";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 1000);
+        }
+    </script>
+</body>
+</html>
