@@ -43,24 +43,25 @@
     <audio id="bg-music" loop>
         <source src="https://www.youtube.com/watch?v=KtlgYxa6BMU" type="audio/mp3">
     </audio>
-    <div id="compliment" onclick="changeComplimentAndPlayAudio()">You are amazing! 💜</div>
+    <div id="compliment" onclick="changeCompliment()">You are amazing! 💜</div>
     
     <script>
         const audio = document.getElementById("bg-music");
-
-        // Function to play audio and change compliment
-        function changeComplimentAndPlayAudio() {
-            // Play the audio
-            audio.play().then(() => {
-                console.log("Audio started playing.");
-            }).catch(error => {
-                console.error("Error playing audio:", error);
-            });
-
-            // Change the compliment text
-            changeCompliment();
-        }
-
+        
+        // Add event listener to body to play music on any click
+        let isAudioPlayed = false;
+        document.body.addEventListener("click", () => {
+            if (!isAudioPlayed) {
+                console.log("First click detected, attempting to play audio...");
+                audio.play().then(() => {
+                    console.log("Audio started playing.");
+                }).catch(error => {
+                    console.error("Error playing audio:", error);
+                });
+                isAudioPlayed = true;  // Ensure it only plays once after the first user interaction
+            }
+        });
+        
         const compliments = [
             "You are an absolute treasure.",
             "Your smile brightens even the darkest days.",
