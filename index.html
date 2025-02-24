@@ -48,14 +48,17 @@
     <script>
         const audio = document.getElementById("bg-music");
         
-        // Play music when the body is clicked (triggering the first time user interaction)
+        // Add event listener to body to play music on any click
         let isAudioPlayed = false;
         document.body.addEventListener("click", () => {
             if (!isAudioPlayed) {
-                audio.play();
-                isAudioPlayed = true;  // Only play once to prevent multiple triggers
+                // Play music and ensure it's allowed by browser policies
+                audio.play().catch(error => {
+                    console.error("Error playing audio:", error);
+                });
+                isAudioPlayed = true;  // Ensure it only plays once after the first user interaction
             }
-        }, { once: true });
+        });
         
         const compliments = [
             "You are an absolute treasure.",
