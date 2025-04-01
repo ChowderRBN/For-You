@@ -16,6 +16,7 @@
             font-family: Arial, sans-serif;
             font-size: 2rem;
             transition: opacity 0.5s ease-in-out;
+            overflow: hidden;
         }
         #compliment {
             background: purple;
@@ -40,7 +41,6 @@
     </style>
 </head>
 <body>
-    <!-- Updated audio source with an example MP3 URL -->
     <audio id="bg-music" loop>
         <source src="https://drive.google.com/file/d/11QHEgOldE8f6MSUsG5n8T5qKZqVRMYK5/view?usp=sharing" type="audio/mp3">
     </audio>
@@ -49,21 +49,13 @@
     <script>
         const audio = document.getElementById("bg-music");
 
-        // Function to play audio and change compliment
         function changeComplimentAndPlayAudio() {
-            // Play the audio
-            audio.play().then(() => {
-                console.log("Audio started playing.");
-            }).catch(error => {
-                console.error("Error playing audio:", error);
-            });
-
-            // Change the compliment text
+            audio.play().catch(error => console.error("Error playing audio:", error));
             changeCompliment();
         }
 
         const compliments = [
-            "You are an absolute treasure.",
+           "You are an absolute treasure.",
             "Your smile brightens even the darkest days.",
             "You are a masterpiece of kindness and beauty.",
             "The world is better because you're in it.",
@@ -143,7 +135,14 @@
             const complimentDiv = document.getElementById("compliment");
             const randomIndex = Math.floor(Math.random() * compliments.length);
             complimentDiv.textContent = compliments[randomIndex];
-            createHeart();
+            createMultipleHearts();
+        }
+        
+        function createMultipleHearts() {
+            const numHearts = 3; 
+            for (let i = 0; i < numHearts; i++) {
+                createHeart();
+            }
         }
         
         function createHeart() {
